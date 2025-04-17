@@ -28,7 +28,7 @@ async def run_agent(instruction: str) -> str:
     agent = Agent(
         name = "Assistant",
         instructions = "You are a helpful Assistant that manages Todos list.",
-        tools = [get_todos],
+        tools = [get_todos,get_todo_by_id],
         # handoffs=[explain_agent],
         model=OpenAIChatCompletionsModel(
             openai_client=client,
