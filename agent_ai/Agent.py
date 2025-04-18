@@ -24,7 +24,7 @@ async def explain_agent(instruction: str) -> str:
         tools = [],
         model=OpenAIChatCompletionsModel(
             openai_client=client,
-            model="gemini-2.0-flash",
+            model="gemini-1.5-flash",
         ),
     )
     result = await Runner.explain(agent, instruction.join(" ", "Explain in detail Answer."))
@@ -37,7 +37,7 @@ async def run_agent(instruction: str) -> str:
         # handoffs=[explain_agent],
         model=OpenAIChatCompletionsModel(
             openai_client=client,
-            model="gemini-2.0-flash",
+            model="gemini-1.5-flash",
         ),
     )
     result = await Runner.run(
@@ -144,11 +144,9 @@ def chat(instruction: str) -> str:
         str: The Assistant's response.
     """
     while True:
-        instruction = input(message +"\n You:-> ")
         if instruction.lower() == "exit":
             break
         if instruction.lower() == "show":
             instruction = "show - todo display all todos in a structured table format"
         result = asyncio.run(run_agent(instruction))
-        
     return result
