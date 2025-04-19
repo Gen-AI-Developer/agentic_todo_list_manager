@@ -170,6 +170,10 @@ def add_new_todo(title: str, description: str):
         return "Todo added successfully"
     else:
         raise Exception(f"Failed to add todo: {result.status_code}")
+
+@function_tool
+def update_a_todo_by_id(todo_id: int, title: str, description: str):
+    """
     Updates a Todo item by its ID.
 
     Args:
