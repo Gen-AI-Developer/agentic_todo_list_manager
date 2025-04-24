@@ -10,4 +10,5 @@ RUN apt-get update && apt-get install -y \
     python3-venv
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
-RUN source $HOME/.local/bin/env
+RUN apt-get update && apt-get install -y bash
+RUN bash -c "source $HOME/.local/bin/env"
